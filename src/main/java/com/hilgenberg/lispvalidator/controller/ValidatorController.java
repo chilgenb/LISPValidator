@@ -14,9 +14,13 @@ public class ValidatorController {
     @Autowired
     private ValidatorService validatorService;
 
-    @GetMapping(path="/validate")
-    public ResponseEntity<Boolean> validateIncomingLISPString(@RequestParam String lispStringForInput) {
-        return new ResponseEntity<>(true, HttpStatus.OK);
+    @GetMapping(path="/validate/manually")
+    public ResponseEntity<Boolean> validateLISPStringManually(@RequestParam String lispStringForInput) {
+        return new ResponseEntity<>(validatorService.validateManually(lispStringForInput), HttpStatus.OK);
     }
 
+    @GetMapping(path="/validate/regex")
+    public ResponseEntity<Boolean> validateLISPStringUsingRegex(@RequestParam String listStringForInput) {
+        return new ResponseEntity<>(validatorService.validateUsingRegex(listStringForInput), HttpStatus.OK);
+    }
 }
