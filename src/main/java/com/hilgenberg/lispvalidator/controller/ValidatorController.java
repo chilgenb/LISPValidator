@@ -12,8 +12,8 @@ public class ValidatorController {
     @Autowired
     private ValidatorService validatorService;
 
-    @GetMapping(path="/validation/manual")
-    public ResponseEntity<Boolean> validateLISPStringManually(@RequestBody String lispStringForInput) {
+    @GetMapping(path="/validation/lisp")
+    public ResponseEntity<Boolean> validateLISP(@RequestBody String lispStringForInput) {
         return new ResponseEntity<>(validatorService.validateLISPString(lispStringForInput), HttpStatus.OK);
     }
 }
